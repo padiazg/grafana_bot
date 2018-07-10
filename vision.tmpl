@@ -1,0 +1,17 @@
+{{if eq .State "alerting"}}
+State: <b>{{.State | str_UpperCase}} 🔥</b>
+{{end -}}
+{{if eq .State "ok"}}
+Status: <b>{{.State | str_UpperCase}} ✅</b>
+{{end }}
+{{ .Message }}
+Regla: <a href="{{ .RuleUrl }}">{{ .RuleName }}</a>
+
+<b>Alertas:</b>
+{{- range $val := .EvalMatches}}
+  {{$val.Metric}}: {{str_Format_Byte $val.Value 1}}
+  {{/* $val.Metric}}: {{$val.Value | str_FormatFloat */}}
+  {{/* {{- range  $key, $value := $val.Tags}}
+    {{$key}}: {{$value}}
+  {{ end}} */}}
+{{ end}}
