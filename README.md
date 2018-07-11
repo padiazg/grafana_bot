@@ -2,7 +2,7 @@
 
 This bot is designed to alert messages from [grafana](https://grafana.com/).
 
-This is forked from [prometheus_bot](https://github.com/inCaller/prometheus_bot).
+Forked from [prometheus_bot](https://github.com/inCaller/prometheus_bot).
 
 ## Compile
 
@@ -39,16 +39,17 @@ make
 
 ### Configuring grafana
 
-Alert manager configuration file:
+Go to *Alerting* -> *Notification channels* -> *New Channel*
 
-```yml
-- name: 'admins'
-  webhook_configs:
-  - send_resolved: True
-    url: http://127.0.0.1:9087/alert/-chat_id
-```
+Set a name you like, ej. TelegramBotWebhook, and select *webhook* as Type.
 
-Replace ```-chat_id``` with the number you got from your bot, with ```-```. To use multiple chats just add more receivers.
+In *Url* put the address of the instance or container.  
+Ej:  
+http://localhost:9087/alert/chat_id  
+http://my_docker:9087/alert/chat_id
+
+Replace ```chat_id``` with the number you got from your bot, make sure you include the ```-``` if your id has one.  
+To use multiple chats just add more receivers.
 
 ## Customising messages with template
 
