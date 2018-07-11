@@ -37,7 +37,7 @@ make
     1. Start conversation, send message to bot mentioning it
     2. Add your bot to a group. It should report group id now. To get ID of a group if bot is already a member [send a message that starts with `/`](https://core.telegram.org/bots#privacy-mode)
 
-### Configuring grafana
+### Configuring Grafana
 
 Go to *Alerting* -> *Notification channels* -> *New Channel*
 
