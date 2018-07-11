@@ -1,0 +1,20 @@
+FROM golang:alpine
+
+ENV http_proxy=http://10.118.1.80:3128/
+ENV https_proxy=http://10.118.1.80:3128/
+ENV target_dir /grafana
+
+RUN mkdir -p $target_dir
+WORKDIR $target_dir
+
+RUN apk --no-cache add make git nano curl ca-certificates
+
+COPY main.go ./
+COPY Makefile ./
+
+RUN go get -d -v && \
+    CGO_ENABLED=0 GOOS=linux go build -v -a -installsuffix cgo -o grafana_bot
+
+EXPOSE 9087
+
+ENTRYPOINT ["./grafana_bot"]

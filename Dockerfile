@@ -1,4 +1,4 @@
-FROM golang:1.10.2 as builder
+FROM golang:alpine as builder
 WORKDIR /
 RUN git clone https://github.com/inCaller/prometheus_bot && \
     cd prometheus_bot && \
@@ -6,7 +6,7 @@ RUN git clone https://github.com/inCaller/prometheus_bot && \
     CGO_ENABLED=0 GOOS=linux go build -v -a -installsuffix cgo -o prometheus_bot
 
 
-FROM alpine:3.5
+FROM alpine:3.7
 COPY --from=builder /prometheus_bot/prometheus_bot /
 RUN apk add --no-cache ca-certificates
 EXPOSE 9087
