@@ -1,4 +1,4 @@
-TARGET=prometheus_bot
+TARGET=grafana_bot
 
 all: main.go
 	go build -o $(TARGET)

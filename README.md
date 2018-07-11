@@ -1,8 +1,8 @@
 # grafana_bot
 
-This is a fork from [prometheus_bot](https://github.com/inCaller/prometheus_bot).
-
 This bot is designed to alert messages from [grafana](https://grafana.com/).
+
+This is forked from [prometheus_bot](https://github.com/inCaller/prometheus_bot).
 
 ## Compile
 
@@ -50,30 +50,6 @@ Alert manager configuration file:
 
 Replace ```-chat_id``` with the number you got from your bot, with ```-```. To use multiple chats just add more receivers.
 
-## Test
-
-To run tests with `make test` you have to:
-
-- Create `config.yml` with a valid telegram API key and timezone in the project directory
-- Create `prometheus_bot` executable binary in the project directory
-- Define chat ID with `TELEGRAM_CHATID` environment variable
-- Ensure port `9087` on localhost is available to bind to
-
-```bash
-export TELEGRAM_CHATID="-YOUR TELEGRAM CHAT ID"
-make test
-```
-### Create your own test
-When alert manager send alert to telegram bot, *only debug flag ```-d```* Telegram bot will dump json in that generate alert, in stdout.
-You can copy paste this from json for your test, by creating new .json.
-Test will send ```*.json``` file into ```testdata``` folder
-
-or
-
-```sh
-TELEGRAM_CHATID="-YOUR TELEGRAM CHAT ID" make test
-```
-
 ## Customising messages with template
 
 This bot support [go templating language](https://golang.org/pkg/text/template/).
@@ -115,9 +91,7 @@ Template language support many different functions for text, number and data for
 Example:
     -    35'000'000 [Kb] will converter to '35 Gb'
     -    89'000 [Kb] will converter to '89 Mb'
--   ```str_Format_MeasureUnit```: Convert string to scaled number and add append measure unit label. For add measure unit label you could add it in prometheus alerting rule. Example of working: 8*e10 become 80G. You cuold also start from a different scale, example kilo:"s|g|3". Check production example for complete implementation. Require ```split_token: "|"``` in conf.yaml
 -   ```HasKey```: Param:dict map, key_search string Search in map if there requeted key
-
 -    ```str_FormatDate```: Convert prometheus string date in your preferred date time format, config file param ```time_outdata``` could be used for setup your favourite format
 Require more setting in your cofig.yaml
 ```yaml
@@ -125,13 +99,3 @@ time_zone: "Europe/Rome"
 time_outdata: "02/01/2006 15:04:05"
 ```
 [WIKI List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-
-## Production example
-
-Production example contains a example of how could be a real template.
-
-```testdata/production_example.json```
-```testdata/production_example.tmpl```
-
-It could be a base, for build a real tempalte, or simply copy some part, check-out how to use functions.
-Sysadmin usually love copy.

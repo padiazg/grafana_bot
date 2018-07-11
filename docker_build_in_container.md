@@ -1,4 +1,10 @@
-To build the project in a container
+## To build the project in a container
+
+This is intended for development purpusses.  
+Notice the use of *--rm* and *-it*, that means that when you leave the container everything goes away.
+
+*--env https_proxy* is needed if you, like me, are behind a corporate proxy.
+
 ```bash
  docker run -it --rm \
     -v f:/workspace/go/grafana_bot:/grafana_bot \
