@@ -4,6 +4,12 @@ This bot is designed to alert messages from [grafana](https://grafana.com/).
 
 Forked from [prometheus_bot](https://github.com/inCaller/prometheus_bot).
 
+## Docker Hub
+```bash
+docker pull padiazg/grafana-bot
+```
+Image page [here](https://hub.docker.com/r/padiazg/grafana-bot/)
+
 ## Compile
 
 [GOPATH related doc](https://golang.org/doc/code.html#GOPATH).
